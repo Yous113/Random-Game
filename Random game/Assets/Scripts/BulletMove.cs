@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private Rigidbody2D body;
+    public float speed;
+    Vector2 speedV2;
+
+     void start()
+    {
+        speedV2 = new Vector2(speed, 0);
+        body = GetComponent<Rigidbody2D>();
+        addSpeed();
+    }
+
+    private void Update()
+    {
+        if(transform.position.y > 100)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    void addSpeed()
+    {
+        body.AddRelativeForce(speedV2);
+    }
 }
